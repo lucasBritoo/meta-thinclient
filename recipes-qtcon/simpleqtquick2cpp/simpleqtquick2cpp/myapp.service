@@ -1,0 +1,14 @@
+[Unit]
+Description=Simple QtQuick2Cpp
+After=systemd-user-sessions.service
+
+[Service]
+User=root
+WorkingDirectory=/opt/simpleqtquick2cpp/bin
+EnvironmentFile=/etc/default/qt
+Environment=QT_QPA_EGLFS_HIDECURSOR=1
+Environment=QT_QPA_PLATFORM=eglfs
+ExecStart=-/opt/simpleqtquick2cpp/bin/simpleqtquick2cpp
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,6 @@
+Images:
+  bitbake qtcon-image-eglfs
+
+
+Generate toolchain with Qt5 support:
+  bitbake -c populate_sdk qtcon-image-eglfs
