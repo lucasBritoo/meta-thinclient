@@ -1,4 +1,4 @@
-DESCRIPTION = "QtCon image with Qt Graphics QPA EGLFS"
+DESCRIPTION = "ThinClient image with Qt Graphics QPA EGLFS"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
@@ -11,7 +11,7 @@ IMAGE_FEATURES += " \
                    package-management \
                    ssh-server-openssh \
                    splash \
-		   tools-sdk \
+		           tools-sdk \
                    "
 
 IMAGE_LINGUAS = "en-us"
@@ -35,12 +35,13 @@ IMAGE_INSTALL_append = " \
                         qt5everywheredemo \
                         "
 
-export IMAGE_BASENAME = "qtcon-image-eglfs"
+export IMAGE_BASENAME = "thinclient-image"
 
 inherit extrausers  
 EXTRA_USERS_PARAMS = " \
                       usermod -P 'r00t' root; \
-                      useradd -U -m -P 'pi' raspberry; \
+                      useradd -U -m -P 'pi' brito-prd; \
+                      usermod -aG root brito-prd; \
                       "
 
 inherit core-image populate_sdk_qt5

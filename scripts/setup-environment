@@ -1,4 +1,4 @@
 #! /bin/sh
 
-export TEMPLATECONF=${PWD}/layers/meta-qtcon-brasil/conf
+export TEMPLATECONF=${PWD}/layers/meta-thinclient/conf
 source ${PWD}/layers/oe-init-build-env build

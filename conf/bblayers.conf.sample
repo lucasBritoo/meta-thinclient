@@ -16,6 +16,6 @@ BBLAYERS ?= " \
   ${TOPDIR}/../layers/meta-oe/meta-python \
   ${TOPDIR}/../layers/meta-qt5 \
   ${TOPDIR}/../layers/meta-raspberrypi \
-  ${TOPDIR}/../layers/meta-qtcon-brasil \
+  ${TOPDIR}/../layers/meta-thinclient \
   "
 

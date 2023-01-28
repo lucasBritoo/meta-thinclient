@@ -1,6 +1,6 @@
 Images:
-  bitbake qtcon-image-eglfs
+  bitbake thinclient-image
 
 
 Generate toolchain with Qt5 support:
-  bitbake -c populate_sdk qtcon-image-eglfs
+  bitbake -c populate_sdk thinclient-image
