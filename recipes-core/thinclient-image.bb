@@ -2,10 +2,10 @@ DESCRIPTION = "ThinClient image with Qt Graphics QPA EGLFS"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
+# Busca o arquivo com os pacotes
 require qt5.inc
 
-# Packages to develop on image: gcc, gdb, strace, make, packages -dev
-# Add: dev-pkgs tools-debug tools-sdk
+# PAcotes adicionais na imagem
 IMAGE_FEATURES += " \
                    eclipse-debug \
                    package-management \
@@ -16,13 +16,8 @@ IMAGE_FEATURES += " \
 
 IMAGE_LINGUAS = "en-us"
 
+# SystemD inicia no modo múltipo usuário sem interface gráfica
 SYSTEMD_DEFAULT_TARGET = "multi-user.target"
-
-GSTREAMER_PACKAGES = " \
-                      gstreamer1.0-plugins-base \
-                      gstreamer1.0-plugins-bad \
-                      gstreamer1.0-plugins-good \
-                      "
 
 IMAGE_INSTALL_append = " \
                         bluez5 \
@@ -35,13 +30,17 @@ IMAGE_INSTALL_append = " \
                         qt5everywheredemo \
                         "
 
-export IMAGE_BASENAME = "thinclient-image"
+# 
+export IMAGE_BASENAME = ${ENV_IMAGE}
 
-inherit extrausers  
+inherit extrausers 
+
+# Define senha do usuario root como r00t
+# Cria um novo usuario e atribui o usuario ao grupo root
 EXTRA_USERS_PARAMS = " \
                       usermod -P 'r00t' root; \
-                      useradd -U -m -P 'pi' brito-prd; \
-                      usermod -aG root brito-prd; \
+                      useradd -U -m -P ${ENV_PASS} ${ENV_USER}; \
+                      usermod -aG root ${ENV_USER}; \
                       "
 
 inherit core-image populate_sdk_qt5
