@@ -1,0 +1,103 @@
+# Define a máquina alvo
+MACHINE = ${ENV_TARGET}
+
+# Define o diretório onde os arquivos de origem (downloads) devem ser armazenados 
+DL_DIR ?= "${TOPDIR}/../dl"
+
+# Define o diretório onde o Yocto armazena as informações de estado intermediário para acelerar compilações futuras.
+SSTATE_DIR ?= "${TOPDIR}/sstate-cache"
+
+# Define o diretório temporário usado pelo Yocto para compilar pacotes e construir imagens
+TMPDIR = "${TOPDIR}/tmp"
+
+# Define a distribuição usada pelo Yocto
+DISTRO = ${ENV_DISTRO}
+
+# Define o tipo de pacote a ser gerado apos compilacao. 
+PACKAGE_CLASSES = "package_ipk"
+
+# Define as classes de usuários usadas no ambiente de construção
+# buildstats = coleta estatisticas de build 
+# image-mklibs = usada para otimizar as bibliotecas compartilhadas em imagens
+# image-prelink = aplica prelink as bibliotecas das imagens. Isso acelera o tempo de inicialização de aplicativos
+USER_CLASSES ?= "buildstats image-mklibs image-prelink"
+
+# Define a resolução de patches.
+# Noop significa que os patches não serão resolvidos automaticamente
+PATCHRESOLVE = "noop"
+
+# Define os diretórios que serão montados quanto ao uso de disco durante a compilação
+# e especifica ações a serem tomadas quando os limites de uso de disco são atingidos.
+# AÇÃO, DIRETÓRIO, LIMITE DE ESPAÇO, TAMANHO MÍNIMO DE ARQUIVO
+# AÇÃO = STOPTASKS | ABORT
+BB_DISKMON_DIRS ??= "\
+    STOPTASKS,${TMPDIR},1G,100K \
+    STOPTASKS,${DL_DIR},1G,100K \
+    STOPTASKS,${SSTATE_DIR},1G,100K \
+    STOPTASKS,/tmp,100M,100K \
+    ABORT,${TMPDIR},100M,1K \
+    ABORT,${DL_DIR},100M,1K \
+    ABORT,${SSTATE_DIR},100M,1K \
+    ABORT,/tmp,10M,1K"
+
+# Versão da configuração local
+CONF_VERSION = "1"
+
+# -------------------------------------------------------#
+# Definicao do Raspberry
+# -------------------------------------------------------#
+
+# Tipo de filessystem
+# rpi-sdimg = formato específico para imagem em cartão SD para raspberry
+IMAGE_FSTYPES_append = " rpi-sdimg"
+
+# Define a utilização do u-boot
+RPI_USE_U_BOOT = "1"
+
+# Desativa os gráficos VC4 - Drivers para GPU
+DISABLE_VC4GRAPHICS = "1"
+
+# Desativa o Overscan
+# Overscan é uma técnica para ajustar exibição de vídeo em telas de TV antigas referente a bordas da imagem.
+DISABLE_OVERSCAN = "0"
+# ENABLE_UART = "1"
+# SERIAL_CONSOLES = "115200;ttyAMA0"
+
+
+# -------------------------------------------------------#
+# Definicao da distro
+# -------------------------------------------------------#
+
+# Desabilita as gettys do SysVinit
+# Getty gerencia o acesso a terminais de texto (TTY). Desligar ele é útil para configurar um sistema para não usar terminais de texto
+SYSVINIT_ENABLED_GETTYS = ""
+
+# Define recursos considerados para a distribuicao como sysvinit
+# Sysvinit é um sistema de inicialização
+DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
+
+# Adiciona recursos a distro
+DISTRO_FEATURES_append = " bluetooth wifi systemd gstreamer pam opengl"
+
+# Remove recursos da distro 
+DISTRO_FEATURES_remove = " x11 vulkan wayland irda pcmcia nfc nfs"
+
+# Define o systemD como init manager
+VIRTUAL-RUNTIME_init_manager = "systemd"
+
+# Define que não serão usadas scripts de inicalização
+VIRTUAL-RUNTIME_initscripts = ""
+
+# Provedor de pacotes udev
+PREFERRED_PROVIDER_udev = "systemd"
+PREFERRED_PROVIDER_udev-utils = "systemd"
+
+# Provedor de pacotes jpeg
+PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
+PREFERRED_PROVIDER_jpeg-native = "libjpeg-turbo-native"
+
+# Remove as imagens antigas durante o processo de construção
+RM_OLD_IMAGE = "1"
+
+# Habilita a herança da classe rm_work que remove diretórios de trabalho após a construção
+INHERIT += " rm_work"
