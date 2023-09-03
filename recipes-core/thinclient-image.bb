@@ -31,7 +31,7 @@ IMAGE_INSTALL_append = " \
                         "
 
 # 
-export IMAGE_BASENAME = ${ENV_IMAGE}
+export IMAGE_BASENAME = "thinclient-image"
 
 inherit extrausers 
 
@@ -39,8 +39,8 @@ inherit extrausers
 # Cria um novo usuario e atribui o usuario ao grupo root
 EXTRA_USERS_PARAMS = " \
                       usermod -P 'r00t' root; \
-                      useradd -U -m -P ${ENV_PASS} ${ENV_USER}; \
-                      usermod -aG root ${ENV_USER}; \
+                      useradd -U -m -P 'dev123' dev; \
+                      usermod -aG root dev; \
                       "
 
 inherit core-image populate_sdk_qt5

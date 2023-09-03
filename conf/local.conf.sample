@@ -1,5 +1,5 @@
 # Define a máquina alvo
-MACHINE = ${ENV_TARGET}
+MACHINE = "raspberrypi3"
 
 # Define o diretório onde os arquivos de origem (downloads) devem ser armazenados 
 DL_DIR ?= "${TOPDIR}/../dl"
@@ -11,7 +11,7 @@ SSTATE_DIR ?= "${TOPDIR}/sstate-cache"
 TMPDIR = "${TOPDIR}/tmp"
 
 # Define a distribuição usada pelo Yocto
-DISTRO = ${ENV_DISTRO}
+DISTRO = "poky"
 
 # Define o tipo de pacote a ser gerado apos compilacao. 
 PACKAGE_CLASSES = "package_ipk"
