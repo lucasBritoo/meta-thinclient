@@ -101,3 +101,11 @@ RM_OLD_IMAGE = "1"
 
 # Habilita a herança da classe rm_work que remove diretórios de trabalho após a construção
 INHERIT += " rm_work"
+
+
+# -------------------------------------------------------#
+# Definicao do UpdateHub
+# -------------------------------------------------------#
+
+UPDATEHUB_SERVER_URL = "http://192.168.0.9:8080/"
+UPDATEHUB_PACKAGE_VERSION_SUFFIX = "-test-image-1"
