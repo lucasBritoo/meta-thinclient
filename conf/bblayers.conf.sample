@@ -21,7 +21,6 @@ BBLAYERS ?= " \
   ${TOPDIR}/../layers/meta-oe/meta-python \
   ${TOPDIR}/../layers/meta-qt5 \
   ${TOPDIR}/../layers/meta-raspberrypi \
-  ${TOPDIR}/../layers/bitbake \
   ${TOPDIR}/../layers/meta-rust-bin \
   ${TOPDIR}/../layers/meta-updatehub \
   ${TOPDIR}/../layers/meta-updatehub-qa \
