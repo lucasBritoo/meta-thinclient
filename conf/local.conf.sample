@@ -107,5 +107,5 @@ INHERIT += " rm_work"
 # Definicao do UpdateHub
 # -------------------------------------------------------#
 
-UPDATEHUB_SERVER_URL = "http://192.168.0.9:8080/"
+UPDATEHUB_SERVER_URL = "http://192.168.0.3:8080/"
 UPDATEHUB_PACKAGE_VERSION_SUFFIX = "-test-image-1"
