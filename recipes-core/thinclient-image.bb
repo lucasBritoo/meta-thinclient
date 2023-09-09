@@ -45,4 +45,4 @@ EXTRA_USERS_PARAMS = " \
                       usermod -aG root dev; \
                       "
 
-inherit core-image populate_sdk_qt5 updatehub-image updatehub-rpi
+inherit core-image populate_sdk_qt5 updatehub-image
