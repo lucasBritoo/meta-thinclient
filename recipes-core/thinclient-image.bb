@@ -12,6 +12,8 @@ IMAGE_FEATURES += " \
                    ssh-server-openssh \
                    splash \
 		           tools-sdk \
+                   curl \
+                   net-tools \
                    "
 
 IMAGE_LINGUAS = "en-us"
@@ -43,4 +45,4 @@ EXTRA_USERS_PARAMS = " \
                       usermod -aG root dev; \
                       "
 
-inherit core-image populate_sdk_qt5
+inherit core-image populate_sdk_qt5 updatehub-image updatehub-rpi

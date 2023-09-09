@@ -19,11 +19,12 @@ BBLAYERS ?= " \
   ${TOPDIR}/../layers/meta-oe/meta-multimedia \
   ${TOPDIR}/../layers/meta-oe/meta-networking \
   ${TOPDIR}/../layers/meta-oe/meta-python \
+  ${TOPDIR}/../layers/meta-rust-bin \
   ${TOPDIR}/../layers/meta-qt5 \
   ${TOPDIR}/../layers/meta-raspberrypi \
-  ${TOPDIR}/../layers/meta-rust-bin \
-  ${TOPDIR}/../layers/meta-updatehub \
   ${TOPDIR}/../layers/meta-updatehub-qa \
+  ${TOPDIR}/../layers/meta-ossystems-base \
+  ${TOPDIR}/../layers/meta-updatehub \
   ${TOPDIR}/../layers/meta-updatehub-raspberrypi \
   ${TOPDIR}/../layers/meta-thinclient \
   "
