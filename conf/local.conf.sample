@@ -41,7 +41,7 @@ BB_DISKMON_DIRS ??= "\
     ABORT,/tmp,10M,1K"
 
 # Versão da configuração local
-CONF_VERSION = "1"
+CONF_VERSION = "1.1"
 
 # -------------------------------------------------------#
 # Definicao do Raspberry
