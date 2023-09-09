@@ -1,3 +1,6 @@
+# Versão da configuração local
+CONF_VERSION = "2"
+
 # Define a máquina alvo
 MACHINE = "raspberrypi3"
 
@@ -39,9 +42,6 @@ BB_DISKMON_DIRS ??= "\
     ABORT,${DL_DIR},100M,1K \
     ABORT,${SSTATE_DIR},100M,1K \
     ABORT,/tmp,10M,1K"
-
-# Versão da configuração local
-CONF_VERSION = "1.1"
 
 # -------------------------------------------------------#
 # Definicao do Raspberry

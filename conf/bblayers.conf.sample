@@ -1,7 +1,7 @@
 # Esta variavel indica a versao do arquivo de configuracao. Ela é usada para
 # verificar se o arquivo foi alterado de forma incompativel com versoes anterioes.
 # Se houver alteracao eh incrementada. O build eh realizado em build/conf/bblayers.conf
-POKY_BBLAYERS_CONF_VERSION = "1.1"
+POKY_BBLAYERS_CONF_VERSION = "2"
 
 # Indica o caminho base para o bitbake encontrar os arquivos. TOPDIR referencia o diretório raiz do Yocto
 BBPATH = "${TOPDIR}"
